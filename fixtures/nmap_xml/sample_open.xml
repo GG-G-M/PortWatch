@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun PUBLIC "-//IDN nmap.org//DTD Nmap XML 1.04//EN" "https://svn.nmap.org/nmap/docs/nmap.dtd">
+<nmaprun scanner="nmap" args="nmap -T3 -sT --open -oX -" start="1720000000" version="7.95" xmloutputversion="1.04">
+<scaninfo type="connect" protocol="tcp" numservices="1000" services="1,3,7,9,13,17,19,21-23,25-26,37,53,79-82,88,106,110-111,113,119,135,139,143-144,179,199,389,427,443-445,465,513-515,543-544,548,554,587,631,646,873,990,993,995,1025-1029,1110,1433,1720,1723,1755,1900,2000-2001,2049,2121,2717,3000,3128,3306,3389,3986,4899,5000,5009,5051,5060,5101,5190,5357,5432,5631,5666,5800,5900,6000-6001,6646,7070,8000,8008-8009,8080-8081,8443,8888,9100,9999-10000,32768,49152-49157"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1720000000" endtime="1720000010"><status state="up" reason="syn-ack" reason_ttl="0"/>
+<address addr="192.168.1.10" addrtype="ipv4"/>
+<hostnames><hostname name="lab-pc01" type="PTR"/></hostnames>
+<ports><extraports state="closed" count="990"/>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ssh" product="OpenSSH" version="8.9p1" extrainfo="Ubuntu-3ubuntu0.6" ostype="Linux" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="http" product="Apache httpd" version="2.4.52" extrainfo="(Ubuntu)" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="3389"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ms-wbt-server" product="Microsoft Terminal Services" method="probed" conf="10"/></port>
+</ports>
+<times srtt="1234" rttvar="567" to="100000"/>
+</host>
+<runstats><finished time="1720000010" timestr="Thu Jul  3 12:00:10 2025" summary="Nmap done at Thu Jul  3 12:00:10 2025; 1 IP address (1 host up) scanned in 10.00 seconds" elapsed="10.00"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
