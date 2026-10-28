@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Dashboard</h1>
+<div class="grid">
+  <div class="card stat"><div class="stat-num">{{ devices_count }}</div><div class="stat-label">Devices</div></div>
+  <div class="card stat"><div class="stat-num">{{ open_findings }}</div><div class="stat-label">Open Findings</div></div>
+  <div class="card stat"><div class="stat-num">{{ scans_count }}</div><div class="stat-label">Scans</div></div>
+</div>
+<div class="card">
+  <h2>Open Findings (Top 10)</h2>
+  <table>
+    <thead><tr><th>IP</th><th>Port/Proto</th><th>Severity</th><th>Verdict</th><th>Reason</th><th>Status</th></tr></thead>
+    <tbody>
+      {% for f in findings %}
+      <tr>
+        <td>{{ f.ip_address }}</td>
+        <td>{{ f.port }}/{{ f.protocol }}</td>
+        <td class="sev-{{ f.severity }}">{{ f.severity }}</td>
+        <td>{{ f.verdict }}</td>
+        <td>{{ f.reason }}</td>
+        <td>{{ f.status }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6">No open findings</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

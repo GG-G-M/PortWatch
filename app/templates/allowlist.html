@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Allowlist</h1>
+{% if session.get('role_name') == 'Administrator' %}
+<div class="card">
+  <h2>Add Allowlist Entry</h2>
+  <form method="post" action="{{ url_for('allowlist_bp.add_allowlist') }}" class="inline-form">
+    <select name="device_id" required>
+      {% for d in devices %}<option value="{{ d.id }}">{{ d.ip_address }} {{ d.hostname or '' }}</option>{% endfor %}
+    </select>
+    <input type="number" name="port" placeholder="Port" required>
+    <select name="protocol"><option value="tcp">tcp</option><option value="udp">udp</option></select>
+    <input type="text" name="service" placeholder="service (optional)">
+    <button type="submit" class="btn">Add</button>
+  </form>
+</div>
+{% endif %}
+<div class="card">
+  <table>
+    <thead><tr><th>Device</th><th>Port</th><th>Proto</th><th>Service</th><th>Allowed By</th></tr></thead>
+    <tbody>
+      {% for e in entries %}
+      <tr><td>{{ e.ip_address }}</td><td>{{ e.port }}</td><td>{{ e.protocol }}</td><td>{{ e.service }}</td><td>{{ e.allowed_by }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

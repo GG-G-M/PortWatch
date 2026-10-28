@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Scans</h1>
+{% if session.get('role_name') in ['Administrator', 'Lab Technician / Security Analyst'] %}
+<div class="card">
+  <h2>Trigger Scan</h2>
+  <form method="post" action="{{ url_for('scans_bp.trigger_scan') }}" class="inline-form">
+    <select name="ip_address" required>
+      {% for d in devices %}<option value="{{ d.ip_address }}">{{ d.ip_address }} {{ d.hostname or '' }}</option>{% endfor %}
+    </select>
+    <button type="submit" class="btn">Run Gate Check</button>
+  </form>
+  <p class="hint">Gate is enforced. Only authorized private targets pass.</p>
+</div>
+{% endif %}
+<div class="card">
+  <table>
+    <thead><tr><th>ID</th><th>Status</th><th>Requested By</th><th>Nmap Args</th><th>Started</th><th>Finished</th></tr></thead>
+    <tbody>
+      {% for s in scans %}
+      <tr><td>{{ s.id }}</td><td>{{ s.status }}</td><td>{{ s.username }}</td><td>{{ s.nmap_args }}</td><td>{{ s.started_at }}</td><td>{{ s.finished_at }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
