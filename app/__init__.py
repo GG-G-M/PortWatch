@@ -15,6 +15,7 @@ def create_app(config_class=Config):
     from app.routes.scans_bp import scans_bp
     from app.routes.findings_bp import findings_bp
     from app.routes.audit_bp import audit_bp
+    from app.routes.reports_bp import reports_bp
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(dashboard_bp)
@@ -23,5 +24,6 @@ def create_app(config_class=Config):
     app.register_blueprint(scans_bp)
     app.register_blueprint(findings_bp)
     app.register_blueprint(audit_bp)
+    app.register_blueprint(reports_bp)
 
     return app

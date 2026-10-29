@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Reports</h1>
+<div class="card">
+  <h2>Exports</h2>
+  <p><a class="btn" href="{{ url_for('reports_bp.findings_csv') }}">Export Findings as CSV</a></p>
+  <p><a class="btn" href="{{ url_for('reports_bp.print_report') }}">Print-Friendly Report</a></p>
+</div>
+{% endblock %}

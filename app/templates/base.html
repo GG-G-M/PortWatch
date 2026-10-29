@@ -19,7 +19,7 @@
         {% if session.get('role_name') == 'Administrator' %}
           <a href="{{ url_for('audit_bp.audit') }}">Audit Log</a>
         {% endif %}
-        <span class="nav-user">{{ session.get('username') }} ({{ session.get('role_name') }})</span>
+        <a href="{{ url_for('reports_bp.reports') }}">Reports</a>
         <a href="{{ url_for('auth_bp.logout') }}">Logout</a>
       {% else %}
         <a href="{{ url_for('auth_bp.login') }}">Login</a>
